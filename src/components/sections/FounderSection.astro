@@ -1,0 +1,27 @@
+---
+const founderInfo = {
+  name: "Sarah Johnson",
+  title: "Founder & CEO",
+  message: "When I started this directory, I had a simple vision: to create a space where businesses and customers could connect meaningfully. Today, that vision has grown into a thriving community, and I'm proud to see how it helps businesses grow and customers find exactly what they need.",
+  image: "/founder.jpg" // Note: You'll need to add an image to the public folder
+};
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center mb-12">A Few Words from Our Founder</h2>
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-col items-center text-center">
+        <div class="w-24 h-24 rounded-full bg-gray-200 mb-6">
+          <!-- Placeholder for founder image -->
+          <span class="sr-only">Founder's photo</span>
+        </div>
+        <blockquote class="text-xl text-gray-600 italic mb-6">
+          "{founderInfo.message}"
+        </blockquote>
+        <div class="text-primary font-semibold">{founderInfo.name}</div>
+        <div class="text-gray-500">{founderInfo.title}</div>
+      </div>
+    </div>
+  </div>
+</section>
