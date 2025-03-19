@@ -36,9 +36,7 @@ const directoryItems = (await getCollection('directory')).slice(0, 6);
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center mb-12">
         <h2 class="text-3xl font-bold">Featured Listings</h2>
-        <a href="/directory" class="text-primary font-semibold hover:text-secondary">
-          View All →
-        </a>
+        
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {directoryItems.map((item) => (
@@ -49,8 +47,15 @@ const directoryItems = (await getCollection('directory')).slice(0, 6);
             id={item.slug}
           />
         ))}
-      </div>
+      
     </div>
+    <div class="text-center mt-8">
+      <a href="/directory" class="text-primary font-semibold hover:text-secondary">
+        Show All →
+      </a>
+    </div>  
+    </div>
+
   </section>
 
   <SubmitSection />

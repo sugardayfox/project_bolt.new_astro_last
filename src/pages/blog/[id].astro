@@ -1,14 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { supabase } from '../../utils/supabase';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog_posts'); // Adjust the collection name if necessary
+  return blogPosts.map(post => ({
+    params: { id: post.id }, // Ensure this matches the parameter in the URL
+  }));
+}
 
 const { id } = Astro.params;
-
-const { data: post } = await supabase
-  .from('blog_posts')
-  .select('*')
-  .eq('id', id)
-  .single();
+const blogPosts = await getCollection('blog_posts');
+const post = blogPosts.find(post => post.id === id); // Assuming 'id' is the identifier in your collection
 
 if (!post) {
   return Astro.redirect('/404');
@@ -16,15 +19,15 @@ if (!post) {
 ---
 
 <Layout 
-  title={post.title}
-  description={post.description}
+  title={post.data.title}
+  description={post.data.description}
   article={true}
 >
   <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-4xl font-bold mb-4">{post.title}</h1>
+    <h1 class="text-4xl font-bold mb-4">{post.data.title}</h1>
     <time class="text-gray-500 mb-8 block">
-      {new Date(post.published_date).toLocaleDateString()}
+      {new Date(post.data.published_date).toLocaleDateString()}
     </time>
-    <div class="prose max-w-none" set:html={post.content} />
+    <div class="prose max-w-none" set:html={post.data.content} />
   </article>
 </Layout>

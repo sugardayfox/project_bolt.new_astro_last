@@ -6,11 +6,12 @@ export async function getStaticPaths() {
   const directoryItems = await getCollection('directory');
   return directoryItems.map(item => ({
     params: { slug: item.slug },
-    props: { item },
   }));
 }
 
-const { item } = Astro.props;
+const { slug } = Astro.params;
+const directoryItems = await getCollection('directory');
+const item = directoryItems.find(item => item.slug === slug);
 const { Content } = await item.render();
 ---
 

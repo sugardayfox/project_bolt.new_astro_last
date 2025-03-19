@@ -11,12 +11,15 @@ interface Props {
   article?: boolean;
 }
 
+// Use environment variable instead of trying to access the config as per Claude
+const gtmId = import.meta.env.PUBLIC_GTM_ID; 
+
 const {
   title,
   description = "Your comprehensive resource for finding and connecting with the best in the industry.",
   image = "/og-image.jpg",
   article = false
-} = Astro.props;
+} = Astro.props as Props; // Ensure to cast Astro.props to Props
 
 const canonicalURL = getCanonicalURL(Astro);
 const imageURL = new URL(image, Astro.site || 'https://example.com');
@@ -33,6 +36,18 @@ const imageURL = new URL(image, Astro.site || 'https://example.com');
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <!-- Google Tag Manager -->
+    <script define:vars={{ gtmId }}>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer', gtmId);
+    </script>
+    <!-- End Google Tag Manager -->
 
     <!-- Open Graph -->
     <meta property="og:type" content={article ? 'article' : 'website'} />
@@ -48,7 +63,13 @@ const imageURL = new URL(image, Astro.site || 'https://example.com');
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
   </head>
-  <body class="min-h-screen flex flex-col bg-background text-text">
+    <body class="min-h-screen flex flex-col bg-background text-text">
+       <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
     <Navbar />
     <main class="flex-grow">
       <slot />

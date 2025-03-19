@@ -11,6 +11,7 @@ Need to add to to .windsurfrules file.
 
 ## Log
 
+- added CookieYes for cookie consent management via GoogleTagManager
 - Removed Googlethis from the project as we will only implement a search within the site's content.
 - Rolled it back to last working version. 
 - Tried to add AnnouncementBar to the project. But a weird shiki.js related isse occurred, so we did add the feature to our project backlog.

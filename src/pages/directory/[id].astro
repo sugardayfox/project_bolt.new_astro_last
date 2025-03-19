@@ -1,33 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { supabase } from '../../utils/supabase';
+
+export async function getStaticPaths() {
+  const directoryItems = await getCollection('directory');
+  return directoryItems.map(item => ({
+    params: { id: item.id }, // Ensure this matches the parameter in the URL
+  }));
+}
 
 const { id } = Astro.params;
-
-const { data: item } = await supabase
-  .from('directory_items')
-  .select('*')
-  .eq('id', id)
-  .single();
+const directoryItems = await getCollection('directory');
+const item = directoryItems.find(item => item.id === id); // Assuming 'id' is the identifier in your collection
 
 if (!item) {
   return Astro.redirect('/404');
 }
 ---
 
-<Layout title={item.title}>
+<Layout title={item.data.title}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <header class="mb-8">
-      <h1 class="text-4xl font-bold mb-4">{item.title}</h1>
+      <h1 class="text-4xl font-bold mb-4">{item.data.title}</h1>
       <div class="flex flex-wrap gap-2 mb-4">
-        {item.tags.map(tag => (
+        {item.data.tags.map(tag => (
           <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
             {tag}
           </span>
         ))}
       </div>
-      <p class="text-xl text-gray-600">{item.description}</p>
+      <p class="text-xl text-gray-600">{item.data.description}</p>
     </header>
-    <div class="prose max-w-none" set:html={item.content} />
+    <div class="prose max-w-none" set:html={item.data.content} />
   </article>
 </Layout>
