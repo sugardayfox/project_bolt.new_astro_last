@@ -2,6 +2,7 @@
 import '../styles/themes.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
 import { getCanonicalURL } from '../utils/url';
 
 interface Props {
@@ -70,7 +71,8 @@ const imageURL = new URL(image, Astro.site || 'https://example.com');
         height="0" width="0" style="display:none;visibility:hidden"></iframe>
       </noscript>
       <!-- End Google Tag Manager (noscript) -->
-    <Navbar />
+      <AnnouncementBar message="Exciting updates coming soon! Stay tuned." />
+      <Navbar />
     <main class="flex-grow">
       <slot />
     </main>

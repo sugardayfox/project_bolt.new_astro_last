@@ -11,6 +11,7 @@ Need to add to to .windsurfrules file.
 
 ## Log
 
+- added announcment bar
 - added CookieYes for cookie consent management via GoogleTagManager
 - Removed Googlethis from the project as we will only implement a search within the site's content.
 - Rolled it back to last working version. 

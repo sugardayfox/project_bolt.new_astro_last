@@ -1,0 +1,79 @@
+---
+interface Props {
+  message?: string;
+}
+
+const { 
+  message = "Important announcement: Stay updated with our latest offerings!" 
+} = Astro.props;
+---
+
+<div id="astro-announcement-bar" class="announcement-bar">
+  <p>{message}</p>
+  <button id="astro-close-announcement" aria-label="Close announcement">×</button>
+</div>
+
+<script is:inline>
+  // Use an immediately invoked function expression (IIFE) to create a private scope
+  (function() {
+    // Check if announcement has been closed before
+    if (sessionStorage.getItem('astroAnnouncementClosed') === 'true') {
+      var announcementBar = document.getElementById('astro-announcement-bar');
+      if (announcementBar) {
+        announcementBar.style.display = 'none';
+      }
+    }
+
+    // Add event listener when document is ready
+    window.addEventListener('load', function() {
+      var closeBtn = document.getElementById('astro-close-announcement');
+      var bar = document.getElementById('astro-announcement-bar');
+      
+      if (closeBtn && bar) {
+        closeBtn.addEventListener('click', function() {
+          bar.style.display = 'none';
+          sessionStorage.setItem('astroAnnouncementClosed', 'true');
+        });
+      }
+    });
+  })(); // Execute the function immediately
+</script>
+
+<style>
+  .announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4338ca;
+    color: white;
+    padding: 10px 20px;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .announcement-bar p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #astro-close-announcement {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 0 0 15px;
+  }
+  
+  @media (max-width: 640px) {
+    .announcement-bar p {
+      font-size: 14px;
+      max-width: 90%;
+    }
+  }
+</style>

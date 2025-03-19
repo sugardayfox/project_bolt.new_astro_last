@@ -16,11 +16,8 @@ The app is designed to be lightweight, relying on external forms for user engage
 
 ## Core Features
 
-- [WIP] Feature 1: Announcement bar. It should be shown only on first visit (see cookies). Above the NavBar. Can be closed by the user through an interactive (x) in the top right corner of the Announcement bar. Should be shown everywhere but only once in a user session.
-- [WIP] Feature 6: Make the announcement bar responsive. But rather shrink it on smaller screens than stacking the text on top of each other. Or just show the first parts of the text.
+- [WIP] Feature 4: NavBar Language switch. It should have English as the default option and the following languages, written in the language of the respective country: Deutsch, Español, Polski, Nederlands, Svenska, Português, Norsk, Dansk, Suomi, Magyar. We need to have these text options selectable in a dropdown.
 - [WAITING_FOR_TEST] Feature 22: We need a proper GDPR notice in a popover for European visitors. If possible we'll use an external cookie consent library. To make it easy, if we can add vibe then we should.
-- [Backlog] Feature 2: NavBar Logo. It should have a great font style for text logos and use that as the basic option. 
-- [Backlog] Feature 4: NavBar Language switch. It should have English as the default option and the following languages, written in the language of the respective country: Deutsch, Español, Polski, Nederlands, Svenska, Português, Norsk, Dansk, Suomi, Magyar. We need to have these text options selectable in a dropdown.
 - [Backlog]  Feature 13: A section to add resources, just a Call-to-action with a button linked to a tally.so form.
 - [Backlog] Feature 15: A section to sign up for updates. Mailerlite form in a popover, that covers the whole page, while changing the shade from the section's background to the alternative. That can be closed with an (x) in the upper right corner.
 - [Backlog] Feature 20: Make the blog post page responsive. Hero image with the headline inside an overlay on top of it. Then a breadcrumb to go back to the blog page. Or even category later. Then the blog post content. Which should have a half width image with the first paragraph on one of the sides. Then the blogpost with a picture or graphic every 300 words. All with relevant SEO features. 
@@ -29,6 +26,7 @@ The app is designed to be lightweight, relying on external forms for user engage
 - [Backlog] Feature 24: Multi-language Support:
 Adding language switch feature is included, full localization and translation of all content, including regular UI text and the content will also need to be implemented. But it can be done later on project, by project basis, based on research in interest.
 - [Backlog] Feature 25: for easier changeover we should have a central configuration file for stuff like - color palette, logo font type (from Google Fonts or such for easier maintenance). Also, this file's use should be expertly documented in the readme.md.
+- [Backlog] Feature 2: NavBar Logo. It should have a great font style for text logos and use that as the basic option. 
 - [Shipped] Feature 3: NavBar Links. They should be links to the corresponding pages of the application. Also, have a great font style for text links and use that as the basic option. Mainly Resources and Blog. 
 - [Shipped] Feature 5: Make NavBar responsive. So, on appropriately small screens, the NavBar should be hidden and a standard hamburger button should be shown to open it.
 - [Shipped] Feature 7: Make the home page responsive. 
@@ -43,6 +41,8 @@ Adding language switch feature is included, full localization and translation of
     - double check the year thing
 - [Shipped] Feature 19: Blog page to list all the blog post card. They are 1/3 width cards. With the first paragraph as the summary and the rest of the content hidden. All clickable to go to blog post URL.
 - [Shipped] Feature 12: We'll have a 'Show all' button right after the directory entries, directing users to the full resources page /directory. As a link that I moved from the top... 
+- [SHIPPED] Feature 1: Announcement bar. It should be shown only on first visit (see cookies). Above the NavBar. Can be closed by the user through an interactive (x) in the top right corner of the Announcement bar. Should be shown everywhere but only once in a user session.
+- [SHIPPED] Feature 6: Make the announcement bar responsive. But rather shrink it on smaller screens than stacking the text on top of each other. Or just show the first parts of the text.
 
 
 Lightweight Backend:
